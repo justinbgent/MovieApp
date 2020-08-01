@@ -14,6 +14,15 @@ class PopularViewModel: ViewModel() {
     private var movieList = MutableLiveData<MovieList>()
     val liveMovieList: LiveData<MovieList> = movieList
 
+    fun getPopularMovies(movieService: MovieService, page: Int = 1) {
+        disposable = movieService.getPopularMovies(page)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe{ movies ->
+                movieList.value = movies
+            }
+    }
+
     fun searchMovies(search: String, movieService: MovieService, page: Int = 1) {
         disposable = movieService.searchMovies(search, page)
             .subscribeOn(Schedulers.io())
