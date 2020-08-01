@@ -9,7 +9,7 @@ interface MovieService {
     @GET("search/movie${MovieConstants.FIXED_QUERY_PARAMS}")
     fun searchMovies(
         @Query("query")search: String,
-        @Query("page")page: Int = 1) : Single<MovieList>
+        @Query("page")page: Int) : Single<MovieList>
 
     @GET("movie/{id}${MovieConstants.FIXED_QUERY_PARAMS}")
     fun getMovieById(@Path("id")id: Int) : Single<Movie>

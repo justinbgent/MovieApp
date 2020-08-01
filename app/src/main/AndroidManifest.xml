@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:name=".dagger.App"
         android:theme="@style/AppTheme">
-        <activity android:name="com.practice_project.movieapp.MainActivity">
+        <activity android:name="com.practice_project.movieapp.views.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -6,7 +6,7 @@
     app:startDestination="@id/popularMovies">
     <fragment
         android:id="@+id/popularMovies"
-        android:name="com.practice_project.movieapp.PopularMovies"
+        android:name="com.practice_project.movieapp.views.PopularMovies"
         android:label="popular_movies"
         tools:layout="@layout/popular_movies" />
 </navigation>
