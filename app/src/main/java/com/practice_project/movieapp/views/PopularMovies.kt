@@ -28,5 +28,7 @@ class PopularMovies : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         mainActivity.mainVM.movieService
+
+
     }
 }

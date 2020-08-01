@@ -8,7 +8,6 @@ import com.practice_project.movieapp.retrofit.MovieService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import retrofit2.Call
 
 class PopularViewModel: ViewModel() {
     private var disposable: Disposable? = null
