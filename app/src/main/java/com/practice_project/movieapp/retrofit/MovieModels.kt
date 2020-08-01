@@ -1,4 +1,4 @@
-package com.practice_project.movieapp
+package com.practice_project.movieapp.retrofit
 
 data class MovieList(val movies: List<Movie>)
 
