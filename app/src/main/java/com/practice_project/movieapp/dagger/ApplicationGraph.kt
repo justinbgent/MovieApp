@@ -1,16 +1,16 @@
 package com.practice_project.movieapp.dagger
 
-import com.practice_project.movieapp.views.MainActivity
-import com.practice_project.movieapp.viewmodel.MainViewModel
+import com.practice_project.movieapp.retrofit.MovieService
 import com.practice_project.movieapp.viewmodel.PopularViewModel
+import com.practice_project.movieapp.views.PopularMovies
 import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [ViewModelModule::class])
+@Component(modules = [ViewModelModule::class, ApiModule::class])
 interface ApplicationGraph {
-    fun inject(mainActivity: MainActivity)
+    fun inject(popularMovies: PopularMovies)
 
-    fun mainViewModel(): MainViewModel
     fun popularViewModel(): PopularViewModel
+    fun movieService(): MovieService
 }
