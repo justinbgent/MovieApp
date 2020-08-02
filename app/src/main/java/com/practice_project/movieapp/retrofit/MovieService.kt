@@ -1,5 +1,7 @@
 package com.practice_project.movieapp.retrofit
 
+import com.practice_project.movieapp.model.Movie
+import com.practice_project.movieapp.model.MovieList
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -10,7 +12,7 @@ interface MovieService {
     fun getPopularMovies(@Query("page")page: Int) : Single<MovieList>
 
     @GET("search/movie${MovieConstants.FIXED_QUERY_PARAMS}")
-    fun searchMovies(@Query("query")search: String,
+    fun searchMovies(@Query("query")query: String,
         @Query("page")page: Int) : Single<MovieList>
 
     @GET("movie/{id}${MovieConstants.FIXED_QUERY_PARAMS}")

@@ -10,8 +10,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.practice_project.movieapp.MovieAdapter
 import com.practice_project.movieapp.R
 import com.practice_project.movieapp.dagger.App
-import com.practice_project.movieapp.retrofit.Movie
+import com.practice_project.movieapp.model.Movie
 import com.practice_project.movieapp.viewmodel.PopularViewModel
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.popular_movies.*
 import javax.inject.Inject
 
@@ -36,19 +39,17 @@ class PopularMovies : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var movieList = listOf<Movie>()
         val layoutManager = LinearLayoutManager(mainActivity, LinearLayoutManager.VERTICAL, false)
         recycler_view.layoutManager = layoutManager
-        recycler_view.adapter = MovieAdapter(movieList)
-        popularVM.popularMovieList.observe(viewLifecycleOwner, androidx.lifecycle.Observer { movies ->
-            if (movies != null){
-                movieList = movies.movies
-                recycler_view.adapter?.notifyDataSetChanged()
-            }
+
+        popularVM.getPopularMovies().observe(viewLifecycleOwner,
+            androidx.lifecycle.Observer { movies ->
+                recycler_view.adapter = MovieAdapter(movies)
         })
 
-        popularVM.getPopularMovies()
-
-        // popularVM.searchMovies("asd", mainActivity.mainVM.movieService)
+//        popularVM.searchMovies("batman").observe(viewLifecycleOwner,
+//            androidx.lifecycle.Observer { movies ->
+//                recycler_view.adapter = MovieAdapter(movies)
+//        })
     }
 }

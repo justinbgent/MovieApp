@@ -3,12 +3,10 @@ package com.practice_project.movieapp
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.widget.ImageViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textview.MaterialTextView
-import com.practice_project.movieapp.retrofit.Movie
+import com.practice_project.movieapp.model.Movie
 import com.practice_project.movieapp.retrofit.MovieConstants
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.recycler_item.view.*
