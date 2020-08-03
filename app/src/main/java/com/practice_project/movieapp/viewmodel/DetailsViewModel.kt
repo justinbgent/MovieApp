@@ -13,7 +13,6 @@ class DetailsViewModel @Inject constructor(private val movieService: MovieServic
 
     fun getGenreNameById(id: Int): MutableLiveData<String> {
         val genreName: MutableLiveData<String> = MutableLiveData()
-
         disposable = movieService.getGenres()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

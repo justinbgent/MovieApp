@@ -34,7 +34,8 @@ class MovieAdapter(private val movies: List<Movie>, private val navController: N
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val movie = movies[position]
-        Picasso.get().load(MovieConstants.IMAGE_BASE_URL + movie.poster_path).into(holder.image)
+        Picasso.get().load(
+            MovieConstants.IMAGE_BASE_URL_WIDTH_500 + movie.poster_path).into(holder.image)
         holder.title.text = movie.title
 
         holder.layout.setOnClickListener {
