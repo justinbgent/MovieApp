@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.practice_project.movieapp.MovieAdapter
 import com.practice_project.movieapp.R
@@ -15,8 +16,8 @@ import kotlinx.android.synthetic.main.popular_movies.*
 import javax.inject.Inject
 
 class PopularMovies : Fragment() {
+    private lateinit var mainActivity: MainActivity
     @Inject lateinit var popularVM: PopularViewModel
-    lateinit var mainActivity: MainActivity
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -35,12 +36,14 @@ class PopularMovies : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val navController = findNavController()
+
         val layoutManager = LinearLayoutManager(mainActivity, LinearLayoutManager.VERTICAL, false)
         recycler_view.layoutManager = layoutManager
 
         popularVM.getPopularMovies().observe(viewLifecycleOwner,
             androidx.lifecycle.Observer { movies ->
-                recycler_view.adapter = MovieAdapter(movies)
+                recycler_view.adapter = MovieAdapter(movies, navController)
         })
 
 //        popularVM.searchMovies("batman").observe(viewLifecycleOwner,

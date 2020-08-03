@@ -12,8 +12,8 @@ import com.practice_project.movieapp.viewmodel.DetailsViewModel
 import javax.inject.Inject
 
 class MovieDetails : Fragment() {
-    lateinit var mainActivity: MainActivity
-    @Inject private lateinit var detailsVM: DetailsViewModel
+    private lateinit var mainActivity: MainActivity
+    @Inject lateinit var detailsVM: DetailsViewModel
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -31,5 +31,7 @@ class MovieDetails : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        // detailsVM.getGenreNameById()
     }
 }
