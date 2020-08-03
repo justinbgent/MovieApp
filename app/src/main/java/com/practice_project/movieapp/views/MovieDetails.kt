@@ -1,4 +1,4 @@
-package com.practice_project.movieapp
+package com.practice_project.movieapp.views
 
 import android.content.Context
 import android.os.Bundle
@@ -6,8 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.practice_project.movieapp.dagger.App
-import com.practice_project.movieapp.views.MainActivity
+import com.practice_project.movieapp.R
 
 class MovieDetails : Fragment() {
     lateinit var mainActivity: MainActivity
