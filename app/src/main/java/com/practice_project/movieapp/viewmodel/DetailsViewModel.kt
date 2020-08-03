@@ -11,19 +11,21 @@ import javax.inject.Inject
 class DetailsViewModel @Inject constructor(private val movieService: MovieService): ViewModel() {
     private var disposable: Disposable? = null
 
-    fun getGenreNameById(id: Int): MutableLiveData<String> {
-        val genreName: MutableLiveData<String> = MutableLiveData()
+    fun getGenreNameById(ids: List<Int>): MutableLiveData<MutableList<String>> {
+        val genreNames: MutableLiveData<MutableList<String>> = MutableLiveData()
         disposable = movieService.getGenres()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe{ genreList ->
+                val list = mutableListOf<String>()
                 genreList.genres.forEach { genre ->
-                    if (genre.id == id){
-                        genreName.value = genre.name
+                    if (ids.contains(genre.id)){
+                        list.add(genre.name)
                     }
                 }
+                genreNames.value = list
             }
-        return genreName
+        return genreNames
     }
 
     override fun onCleared() {

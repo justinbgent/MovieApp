@@ -13,6 +13,8 @@ import com.practice_project.movieapp.model.MovieConstants
 import com.practice_project.movieapp.viewmodel.DetailsViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.movie_details.*
+import okhttp3.internal.notify
+import java.lang.Exception
 import javax.inject.Inject
 
 class MovieDetails : Fragment() {
@@ -37,13 +39,28 @@ class MovieDetails : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         val movie: Movie? = arguments?.getParcelable<Movie>(MovieConstants.BUNDLE_KEY)
-        if (movie != null){
+        if (movie != null) {
             // Setup view
             txt_title.text = movie.title
             txt_overview.text = movie.overview
             Picasso.get().load(
-                MovieConstants.IMAGE_BASE_URL + movie.backdrop_path).into(img_poster)
+                MovieConstants.IMAGE_BASE_URL + movie.backdrop_path
+            )
+                .into(img_poster, object : com.squareup.picasso.Callback {
+                    override fun onSuccess() {
+                        progress_bar.visibility = View.GONE
+                    }
+                    override fun onError(e: Exception?) { }
+                })
+
+            detailsVM.getGenreNameById(movie.genre_ids)
+                .observe(viewLifecycleOwner, androidx.lifecycle.Observer { genre ->
+                    val genres = genre.joinToString()
+                    txt_genre.text = genres
+                })
+
+            txt_release.text = movie.release_date
         }
-        // detailsVM.getGenreNameById()
+        //
     }
 }

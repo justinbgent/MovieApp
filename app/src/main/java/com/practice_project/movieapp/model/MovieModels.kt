@@ -9,7 +9,7 @@ data class MovieList(val results: List<Movie>): Parcelable
 @Parcelize
 data class Movie(
     val title: String,
-    val id: Int,
+    val genre_ids: List<Int>,
     val release_date: String,
     val overview: String,
     val poster_path: String,
