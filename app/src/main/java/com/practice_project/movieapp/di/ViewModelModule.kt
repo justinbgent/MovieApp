@@ -1,4 +1,4 @@
-package com.practice_project.movieapp.dagger
+package com.practice_project.movieapp.di
 
 import com.practice_project.movieapp.retrofit.MovieService
 import com.practice_project.movieapp.viewmodel.DetailsViewModel

@@ -7,14 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.practice_project.movieapp.R
+import com.practice_project.movieapp.di.App
+import com.practice_project.movieapp.viewmodel.DetailsViewModel
+import javax.inject.Inject
 
 class MovieDetails : Fragment() {
     lateinit var mainActivity: MainActivity
+    @Inject private lateinit var detailsVM: DetailsViewModel
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mainActivity = context as MainActivity
-        //(mainActivity.application as App).appComponent.inject(this)
+        (mainActivity.application as App).appComponent.inject(this)
     }
 
     override fun onCreateView(

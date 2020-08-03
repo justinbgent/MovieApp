@@ -1,4 +1,4 @@
-package com.practice_project.movieapp.dagger
+package com.practice_project.movieapp.di
 
 import com.practice_project.movieapp.retrofit.MovieConstants
 import com.practice_project.movieapp.retrofit.MovieService
@@ -16,7 +16,7 @@ class ApiModule {
     @Singleton
     @Provides
     fun movieService(): MovieService {
-        val logger: HttpLoggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT)
+        val logger = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT)
         logger.level = HttpLoggingInterceptor.Level.BODY
 
         val okHttpClient = OkHttpClient.Builder().addInterceptor(logger).build()

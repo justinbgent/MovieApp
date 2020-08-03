@@ -9,12 +9,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.practice_project.movieapp.MovieAdapter
 import com.practice_project.movieapp.R
-import com.practice_project.movieapp.dagger.App
-import com.practice_project.movieapp.model.Movie
+import com.practice_project.movieapp.di.App
 import com.practice_project.movieapp.viewmodel.PopularViewModel
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.popular_movies.*
 import javax.inject.Inject
 

@@ -1,5 +1,6 @@
 package com.practice_project.movieapp.retrofit
 
+import com.practice_project.movieapp.model.GenreList
 import com.practice_project.movieapp.model.Movie
 import com.practice_project.movieapp.model.MovieList
 import io.reactivex.Single
@@ -17,4 +18,7 @@ interface MovieService {
 
     @GET("movie/{id}${MovieConstants.FIXED_QUERY_PARAMS}")
     fun getMovieById(@Path("id")id: Int) : Single<Movie>
+
+    @GET("genre/movie/list${MovieConstants.FIXED_QUERY_PARAMS}")
+    fun getGenres(): Single<GenreList>
 }
