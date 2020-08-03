@@ -2,15 +2,15 @@ package com.practice_project.movieapp.di
 
 import com.practice_project.movieapp.retrofit.MovieService
 import com.practice_project.movieapp.viewmodel.DetailsViewModel
-import com.practice_project.movieapp.viewmodel.PopularViewModel
+import com.practice_project.movieapp.viewmodel.MoviesViewModel
 import dagger.Module
 import dagger.Provides
 
 @Module
 class ViewModelModule {
     @Provides
-    fun providePopularViewModel(movieService: MovieService): PopularViewModel {
-        return PopularViewModel(movieService)
+    fun providePopularViewModel(movieService: MovieService): MoviesViewModel {
+        return MoviesViewModel(movieService)
     }
 
     @Provides

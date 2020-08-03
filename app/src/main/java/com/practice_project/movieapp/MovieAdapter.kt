@@ -14,7 +14,7 @@ import com.practice_project.movieapp.model.MovieConstants
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.recycler_item.view.*
 
-class MovieAdapter(private val movies: List<Movie>, private val navController: NavController) :
+class MovieAdapter(private val movies: List<Movie>?, private val navController: NavController) :
     RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -30,18 +30,21 @@ class MovieAdapter(private val movies: List<Movie>, private val navController: N
         return ViewHolder(view)
     }
 
-    override fun getItemCount(): Int = movies.size
+    override fun getItemCount(): Int = movies?.size ?: 0
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val movie = movies[position]
-        Picasso.get().load(
-            MovieConstants.IMAGE_BASE_URL_WIDTH_500 + movie.poster_path).into(holder.image)
-        holder.title.text = movie.title
+        if (movies != null) {
+            val movie = movies[position]
+            Picasso.get().load(
+                MovieConstants.IMAGE_BASE_URL_WIDTH_500 + movie.poster_path
+            ).into(holder.image)
+            holder.title.text = movie.title
 
-        holder.layout.setOnClickListener {
-            val bundle = Bundle()
-            bundle.putParcelable(MovieConstants.BUNDLE_KEY, movie)
-            navController.navigate(R.id.action_popularMovies_to_movieDetails, bundle)
+            holder.layout.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putParcelable(MovieConstants.BUNDLE_KEY, movie)
+                navController.navigate(R.id.action_moviesFragment_to_movieDetailsFragment, bundle)
+            }
         }
     }
 }

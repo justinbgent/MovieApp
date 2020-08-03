@@ -12,12 +12,11 @@ import com.practice_project.movieapp.model.Movie
 import com.practice_project.movieapp.model.MovieConstants
 import com.practice_project.movieapp.viewmodel.DetailsViewModel
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.movie_details.*
-import okhttp3.internal.notify
+import kotlinx.android.synthetic.main.fragment_movie_details.*
 import java.lang.Exception
 import javax.inject.Inject
 
-class MovieDetails : Fragment() {
+class MovieDetailsFragment : Fragment() {
     private lateinit var mainActivity: MainActivity
     @Inject lateinit var detailsVM: DetailsViewModel
 
@@ -32,7 +31,7 @@ class MovieDetails : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.movie_details, container, false)
+        return inflater.inflate(R.layout.fragment_movie_details, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

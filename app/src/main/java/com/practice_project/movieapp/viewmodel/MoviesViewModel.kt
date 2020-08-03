@@ -11,29 +11,26 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class PopularViewModel @Inject constructor(private val movieService: MovieService): ViewModel() {
+class MoviesViewModel @Inject constructor(private val movieService: MovieService): ViewModel() {
     private var disposable: Disposable? = null
+    val movieList: MutableLiveData<List<Movie>> = MutableLiveData()
 
-    fun getPopularMovies(page: Int = 1): MutableLiveData<List<Movie>> {
-        val popularMovies = MutableLiveData<List<Movie>>()
+    fun getPopularMovies(page: Int = 1) {
         disposable = movieService.getPopularMovies(page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe{ movies ->
-                popularMovies.value = movies.results
+                movieList.value = movies.results
             }
-        return popularMovies
     }
 
-    fun searchMovies(search: String, page: Int = 1): MutableLiveData<List<Movie>> {
-        val searchMovies = MutableLiveData<List<Movie>>()
+    fun searchMovies(search: String, page: Int = 1) {
         disposable = movieService.searchMovies(search, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe{ movies ->
-                searchMovies.value = movies.results
+                movieList.value = movies.results
             }
-        return searchMovies
     }
 
     override fun onCleared() {

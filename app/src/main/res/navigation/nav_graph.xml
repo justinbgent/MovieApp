@@ -6,16 +6,16 @@
     app:startDestination="@id/popularMovies">
     <fragment
         android:id="@+id/popularMovies"
-        android:name="com.practice_project.movieapp.views.PopularMovies"
+        android:name="com.practice_project.movieapp.views.MoviesFragment"
         android:label="popular_movies"
-        tools:layout="@layout/popular_movies" >
+        tools:layout="@layout/fragment_movies" >
         <action
-            android:id="@+id/action_popularMovies_to_movieDetails"
+            android:id="@+id/action_moviesFragment_to_movieDetailsFragment"
             app:destination="@id/movieDetails" />
     </fragment>
     <fragment
         android:id="@+id/movieDetails"
-        android:name="com.practice_project.movieapp.views.MovieDetails"
+        android:name="com.practice_project.movieapp.views.MovieDetailsFragment"
         android:label="movie_details"
-        tools:layout="@layout/movie_details" />
+        tools:layout="@layout/fragment_movie_details" />
 </navigation>
