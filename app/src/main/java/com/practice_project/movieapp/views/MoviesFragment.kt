@@ -46,6 +46,7 @@ class MoviesFragment : Fragment() {
 
         popularVM.movieList.observe(viewLifecycleOwner,
             androidx.lifecycle.Observer { movies ->
+                progress_bar.visibility = View.GONE
                 recycler_view.adapter = MovieAdapter(movies, navController)
         })
 
