@@ -1,4 +1,4 @@
-package com.lambda_labs.movieapp
+package com.practice_project.movieapp
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
