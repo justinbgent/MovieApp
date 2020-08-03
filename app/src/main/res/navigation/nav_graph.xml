@@ -8,5 +8,14 @@
         android:id="@+id/popularMovies"
         android:name="com.practice_project.movieapp.views.PopularMovies"
         android:label="popular_movies"
-        tools:layout="@layout/popular_movies" />
+        tools:layout="@layout/popular_movies" >
+        <action
+            android:id="@+id/action_popularMovies_to_movieDetails"
+            app:destination="@id/movieDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetails"
+        android:name="com.practice_project.movieapp.MovieDetails"
+        android:label="movie_details"
+        tools:layout="@layout/movie_details" />
 </navigation>
