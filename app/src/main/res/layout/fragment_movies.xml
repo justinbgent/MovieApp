@@ -13,25 +13,15 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_search"
+        app:layout_constraintEnd_toEndOf="parent"
         android:imeOptions="actionSearch"
+        android:drawableEnd="@drawable/search_icon"
         app:layout_constraintHorizontal_weight="1"
         android:hint="@string/search_movies"
         android:includeFontPadding="true"
         android:paddingStart="24dp"
         android:inputType="text"
         tools:ignore="RtlSymmetry" />
-
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/btn_search"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="W,1:1"
-        app:layout_constraintTop_toTopOf="@id/txt_field"
-        app:layout_constraintBottom_toBottomOf="@id/txt_field"
-        app:layout_constraintStart_toEndOf="@id/txt_field"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/search_icon"/>
 
     <ProgressBar
         android:id="@+id/progress_bar"

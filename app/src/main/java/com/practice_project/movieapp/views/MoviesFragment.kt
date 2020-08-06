@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.practice_project.movieapp.MovieAdapter
 import com.practice_project.movieapp.R
 import com.practice_project.movieapp.di.App
+import com.practice_project.movieapp.util.hideSoftKeyboard
 import com.practice_project.movieapp.viewmodel.MoviesViewModel
 import kotlinx.android.synthetic.main.fragment_movies.*
 import javax.inject.Inject
@@ -52,6 +53,8 @@ class MoviesFragment : Fragment() {
 
         txt_field.setOnEditorActionListener { textView, action, _ ->
             if (action == EditorInfo.IME_ACTION_SEARCH){
+                mainActivity.hideSoftKeyboard()
+                txt_field.clearFocus()
                 moviesVM.searchMovies(textView.text.toString())
             }
             true
