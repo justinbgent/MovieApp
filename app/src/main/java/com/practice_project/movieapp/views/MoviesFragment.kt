@@ -2,13 +2,10 @@ package com.practice_project.movieapp.views
 
 import android.content.Context
 import android.os.Bundle
-import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
-import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.practice_project.movieapp.MovieAdapter
@@ -20,7 +17,7 @@ import javax.inject.Inject
 
 class MoviesFragment : Fragment() {
     private lateinit var mainActivity: MainActivity
-    @Inject lateinit var popularVM: MoviesViewModel
+    @Inject lateinit var moviesVM: MoviesViewModel
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -44,12 +41,12 @@ class MoviesFragment : Fragment() {
         val layoutManager = LinearLayoutManager(mainActivity, LinearLayoutManager.VERTICAL, false)
         recycler_view.layoutManager = layoutManager
 
-        popularVM.movieList.observe(viewLifecycleOwner,
+        moviesVM.movieList.observe(viewLifecycleOwner,
             androidx.lifecycle.Observer { movies ->
                 progress_bar.visibility = View.GONE
                 recycler_view.adapter = MovieAdapter(movies, navController)
         })
 
-        popularVM.getPopularMovies()
+        moviesVM.getPopularMovies()
     }
 }
