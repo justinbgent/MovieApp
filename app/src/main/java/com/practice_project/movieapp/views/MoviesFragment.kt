@@ -55,7 +55,10 @@ class MoviesFragment : Fragment() {
             if (action == EditorInfo.IME_ACTION_SEARCH){
                 mainActivity.hideSoftKeyboard()
                 txt_field.clearFocus()
-                moviesVM.searchMovies(textView.text.toString())
+                val text = textView.text.toString()
+                if (text.isNotEmpty()){
+                    moviesVM.searchMovies(text)
+                }
             }
             true
         }
