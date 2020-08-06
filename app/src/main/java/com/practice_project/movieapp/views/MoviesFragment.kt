@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.practice_project.movieapp.MovieAdapter
@@ -48,5 +49,12 @@ class MoviesFragment : Fragment() {
         })
 
         moviesVM.getPopularMovies()
+
+        txt_field.setOnEditorActionListener { textView, action, _ ->
+            if (action == EditorInfo.IME_ACTION_SEARCH){
+                moviesVM.searchMovies(textView.text.toString())
+            }
+            true
+        }
     }
 }
