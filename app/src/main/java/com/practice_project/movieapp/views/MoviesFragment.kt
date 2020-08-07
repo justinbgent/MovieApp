@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.button.MaterialButton
 import com.practice_project.movieapp.MovieAdapter
 import com.practice_project.movieapp.R
 import com.practice_project.movieapp.di.App
@@ -46,7 +47,7 @@ class MoviesFragment : Fragment() {
         moviesVM.movieList.observe(viewLifecycleOwner,
             androidx.lifecycle.Observer { movies ->
                 progress_bar.visibility = View.GONE
-                recycler_view.adapter = MovieAdapter(movies, navController)
+                recycler_view.adapter = MovieAdapter(movies.results, navController)
         })
 
         moviesVM.getPopularMovies()
@@ -62,5 +63,15 @@ class MoviesFragment : Fragment() {
             }
             true
         }
+    }
+
+    private fun disableButton(button: MaterialButton){
+        button.isFocusable = false
+        button.alpha = .5f
+    }
+
+    private fun enableButton(button: MaterialButton){
+        button.isFocusable = true
+        button.alpha = 1f
     }
 }

@@ -13,14 +13,14 @@ import javax.inject.Inject
 
 class MoviesViewModel @Inject constructor(private val movieService: MovieService): ViewModel() {
     private var disposable: Disposable? = null
-    val movieList: MutableLiveData<List<Movie>> = MutableLiveData()
+    val movieList: MutableLiveData<MovieList> = MutableLiveData()
 
     fun getPopularMovies(page: Int = 1) {
         disposable = movieService.getPopularMovies(page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe{ movies ->
-                movieList.value = movies.results
+                movieList.value = movies
             }
     }
 
@@ -29,7 +29,7 @@ class MoviesViewModel @Inject constructor(private val movieService: MovieService
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe{ movies ->
-                movieList.value = movies.results
+                movieList.value = movies
             }
     }
 
