@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.practice_project.movieapp.MovieAdapter
 import com.practice_project.movieapp.R
@@ -46,7 +47,7 @@ class MoviesFragment : Fragment() {
         var lastSearch = ""
         val navController = findNavController()
 
-        val layoutManager = LinearLayoutManager(mainActivity, LinearLayoutManager.VERTICAL, false)
+        val layoutManager = GridLayoutManager(mainActivity, 3, GridLayoutManager.VERTICAL, false)
         recycler_view.layoutManager = layoutManager
 
         moviesVM.movieList.observe(viewLifecycleOwner,

@@ -18,7 +18,6 @@ class MovieAdapter(private val movies: List<Movie>?, private val navController: 
     RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val title: MaterialTextView = view.txt_title
         val image: AppCompatImageView = view.img_movie
         val layout: MaterialCardView = view.item_layout
     }
@@ -38,7 +37,6 @@ class MovieAdapter(private val movies: List<Movie>?, private val navController: 
             Picasso.get().load(
                 MovieConstants.IMAGE_BASE_URL_WIDTH_500 + movie.poster_path
             ).into(holder.image)
-            holder.title.text = movie.title
 
             holder.layout.setOnClickListener {
                 val bundle = Bundle()
