@@ -4,4 +4,6 @@
     <string name="genre">Genre:</string>
     <string name="release_date">Release Date:</string>
     <string name="search_movies">Search Movies...</string>
+    <string name="previous_page">Previous Page</string>
+    <string name="next_page">Next Page</string>
 </resources>
