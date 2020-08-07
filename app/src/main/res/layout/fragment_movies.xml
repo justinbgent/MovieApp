@@ -65,8 +65,7 @@
         app:layout_constraintStart_toEndOf="@+id/btn_previous"
         app:layout_constraintEnd_toStartOf="@id/btn_next"
         app:layout_constraintBottom_toBottomOf="@id/btn_previous"
-        app:layout_constraintTop_toTopOf="@+id/btn_previous"
-        android:text="1 of 5" />
+        app:layout_constraintTop_toTopOf="@+id/btn_previous" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_next"

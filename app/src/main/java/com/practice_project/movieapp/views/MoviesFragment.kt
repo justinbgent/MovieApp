@@ -13,6 +13,8 @@ import com.google.android.material.button.MaterialButton
 import com.practice_project.movieapp.MovieAdapter
 import com.practice_project.movieapp.R
 import com.practice_project.movieapp.di.App
+import com.practice_project.movieapp.util.disableButton
+import com.practice_project.movieapp.util.enableButton
 import com.practice_project.movieapp.util.hideSoftKeyboard
 import com.practice_project.movieapp.viewmodel.MoviesViewModel
 import kotlinx.android.synthetic.main.fragment_movies.*
@@ -40,7 +42,7 @@ class MoviesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val navController = findNavController()
-
+        var searchedMovies = false
         val layoutManager = LinearLayoutManager(mainActivity, LinearLayoutManager.VERTICAL, false)
         recycler_view.layoutManager = layoutManager
 
@@ -48,6 +50,22 @@ class MoviesFragment : Fragment() {
             androidx.lifecycle.Observer { movies ->
                 progress_bar.visibility = View.GONE
                 recycler_view.adapter = MovieAdapter(movies.results, navController)
+                if (movies != null){
+                    val pageProgress = "${movies.page} of ${movies.total_pages}"
+                    txt_page.text = pageProgress
+
+                    if (movies.page == 1){
+                        btn_previous.disableButton()
+                    }else if (movies.page == 2){
+                        btn_previous.enableButton()
+                    }
+
+                    if (movies.page == movies.total_pages){
+                        btn_next.disableButton()
+                    }else if (movies.page == (movies.total_pages -1)){
+                        btn_next.enableButton()
+                    }
+                }
         })
 
         moviesVM.getPopularMovies()
@@ -59,19 +77,10 @@ class MoviesFragment : Fragment() {
                 val text = textView.text.toString()
                 if (text.isNotEmpty()){
                     moviesVM.searchMovies(text)
+                    searchedMovies = true
                 }
             }
             true
         }
-    }
-
-    private fun disableButton(button: MaterialButton){
-        button.isFocusable = false
-        button.alpha = .5f
-    }
-
-    private fun enableButton(button: MaterialButton){
-        button.isFocusable = true
-        button.alpha = 1f
     }
 }
