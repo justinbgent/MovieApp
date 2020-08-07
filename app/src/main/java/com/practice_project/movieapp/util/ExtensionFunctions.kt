@@ -11,10 +11,12 @@ fun Activity.hideSoftKeyboard(){
 
 fun MaterialButton.disableButton(){
     this.isFocusable = false
+    this.isClickable = false
     this.alpha = .5f
 }
 
 fun MaterialButton.enableButton(){
     this.isFocusable = true
+    this.isClickable = true
     this.alpha = 1f
 }

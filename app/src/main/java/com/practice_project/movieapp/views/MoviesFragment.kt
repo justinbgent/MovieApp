@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.button.MaterialButton
 import com.practice_project.movieapp.MovieAdapter
 import com.practice_project.movieapp.R
 import com.practice_project.movieapp.di.App
@@ -41,8 +40,12 @@ class MoviesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val navController = findNavController()
         var searchedMovies = false
+        var totalPages = 1
+        var pageNumber = 1
+        var lastSearch = ""
+        val navController = findNavController()
+
         val layoutManager = LinearLayoutManager(mainActivity, LinearLayoutManager.VERTICAL, false)
         recycler_view.layoutManager = layoutManager
 
@@ -53,7 +56,10 @@ class MoviesFragment : Fragment() {
                 if (movies != null){
                     val pageProgress = "${movies.page} of ${movies.total_pages}"
                     txt_page.text = pageProgress
+                    pageNumber = movies.page
+                    totalPages = movies.total_pages
 
+                    // Keep track of when to disable and enable buttons
                     if (movies.page == 1){
                         btn_previous.disableButton()
                     }else if (movies.page == 2){
@@ -63,6 +69,8 @@ class MoviesFragment : Fragment() {
                     if (movies.page == movies.total_pages){
                         btn_next.disableButton()
                     }else if (movies.page == (movies.total_pages -1)){
+                        btn_next.enableButton()
+                    }else if(movies.page == 1){
                         btn_next.enableButton()
                     }
                 }
@@ -74,13 +82,31 @@ class MoviesFragment : Fragment() {
             if (action == EditorInfo.IME_ACTION_SEARCH){
                 mainActivity.hideSoftKeyboard()
                 txt_field.clearFocus()
-                val text = textView.text.toString()
-                if (text.isNotEmpty()){
-                    moviesVM.searchMovies(text)
+                lastSearch = textView.text.toString()
+                if (lastSearch.isNotEmpty()){
+                    moviesVM.searchMovies(lastSearch)
                     searchedMovies = true
                 }
             }
             true
+        }
+
+        btn_next.setOnClickListener {
+            val onLastPage = pageNumber == totalPages
+            if (searchedMovies && !onLastPage){
+                moviesVM.searchMovies(lastSearch, pageNumber + 1)
+            }else if (!onLastPage){
+                moviesVM.getPopularMovies(pageNumber + 1)
+            }
+        }
+
+        btn_previous.setOnClickListener {
+            val onFirstPage = pageNumber == 1
+            if (searchedMovies && !onFirstPage){
+                moviesVM.searchMovies(lastSearch, pageNumber - 1)
+            }else if (!onFirstPage){
+                moviesVM.getPopularMovies(pageNumber - 1)
+            }
         }
     }
 }
