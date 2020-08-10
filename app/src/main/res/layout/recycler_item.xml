@@ -23,7 +23,19 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:scaleType="fitCenter"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:visibility="gone"
+            android:id="@+id/txt_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/img_movie"
+            app:layout_constraintStart_toStartOf="@+id/img_movie"
+            app:layout_constraintEnd_toEndOf="@id/img_movie"
+            app:layout_constraintBottom_toBottomOf="@id/img_movie"
+            android:textSize="32sp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>
