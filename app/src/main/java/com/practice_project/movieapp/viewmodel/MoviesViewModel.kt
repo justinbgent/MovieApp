@@ -12,6 +12,7 @@ import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class MoviesViewModel @Inject constructor(private val movieService: MovieService): ViewModel() {
+
     private var disposable: Disposable? = null
     val movieList: MutableLiveData<MovieList> = MutableLiveData()
 
