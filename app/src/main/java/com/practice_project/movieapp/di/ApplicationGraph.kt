@@ -17,4 +17,8 @@ interface ApplicationGraph {
     fun popularViewModel(): MoviesViewModel
     fun detailsViewModel(): DetailsViewModel
     fun movieService(): MovieService
+
+//    AndroidInjectionModule::class, ActivityModule::class, AndroidSupportInjectionModule::class
+//    @Component.Builder
+//    abstract class Builder: AndroidInjector.Builder<App>()
 }
