@@ -59,9 +59,11 @@ dependencies {
     // Dagger2
     implementation 'com.google.dagger:dagger:2.28'
     kapt 'com.google.dagger:dagger-compiler:2.28'
-//    annotationProcessor 'com.google.dagger:dagger-android-processor:2.15'
-//    implementation 'com.google.dagger:dagger-android:2.15'
-//    implementation 'com.google.dagger:dagger-android-support:2.15'
+
+    // Koin
+    implementation "org.koin:koin-android:2.1.6"
+    implementation "org.koin:koin-androidx-scope:2.1.6"
+    implementation "org.koin:koin-androidx-viewmodel:2.1.6"
 
     // Retrofit - Api Calls
     implementation 'com.squareup.retrofit2:retrofit:2.6.2'

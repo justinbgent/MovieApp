@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import com.practice_project.movieapp.R
 import com.practice_project.movieapp.di.App
 import com.practice_project.movieapp.model.Movie
-import com.practice_project.movieapp.model.MovieConstants
+import com.practice_project.movieapp.MovieConstants
 import com.practice_project.movieapp.viewmodel.DetailsViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_movie_details.*

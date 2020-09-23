@@ -8,9 +8,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
-import com.google.android.material.textview.MaterialTextView
 import com.practice_project.movieapp.model.Movie
-import com.practice_project.movieapp.model.MovieConstants
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.recycler_item.view.*
 

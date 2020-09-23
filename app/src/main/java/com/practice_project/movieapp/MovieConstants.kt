@@ -1,6 +1,4 @@
-package com.practice_project.movieapp.model
-
-import com.practice_project.movieapp.BuildConfig
+package com.practice_project.movieapp
 
 object MovieConstants {
     const val BASE_URL = "https://api.themoviedb.org/3/"

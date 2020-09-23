@@ -2,7 +2,7 @@ package com.practice_project.movieapp.retrofit
 
 import com.practice_project.movieapp.model.GenreList
 import com.practice_project.movieapp.model.Movie
-import com.practice_project.movieapp.model.MovieConstants
+import com.practice_project.movieapp.MovieConstants
 import com.practice_project.movieapp.model.MovieList
 import io.reactivex.Single
 import retrofit2.http.GET

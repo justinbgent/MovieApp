@@ -1,6 +1,6 @@
 package com.practice_project.movieapp.di
 
-import com.practice_project.movieapp.model.MovieConstants
+import com.practice_project.movieapp.MovieConstants
 import com.practice_project.movieapp.retrofit.MovieService
 import dagger.Module
 import dagger.Provides
