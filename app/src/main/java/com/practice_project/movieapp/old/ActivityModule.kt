@@ -1,4 +1,4 @@
-package com.practice_project.movieapp.di
+package com.practice_project.movieapp.old
 
 import com.practice_project.movieapp.views.MovieDetailsFragment
 import com.practice_project.movieapp.views.MoviesFragment

@@ -1,4 +1,4 @@
-package com.practice_project.movieapp.di
+package com.practice_project.movieapp.old
 
 import com.practice_project.movieapp.MovieConstants
 import com.practice_project.movieapp.retrofit.MovieService

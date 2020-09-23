@@ -1,4 +1,4 @@
-package com.practice_project.movieapp.di
+package com.practice_project.movieapp.old
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey
