@@ -9,25 +9,22 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.practice_project.movieapp.MovieAdapter
 import com.practice_project.movieapp.R
-import com.practice_project.movieapp.di.App
 import com.practice_project.movieapp.util.disableButton
 import com.practice_project.movieapp.util.enableButton
 import com.practice_project.movieapp.util.hideSoftKeyboard
 import com.practice_project.movieapp.viewmodel.MoviesViewModel
 import kotlinx.android.synthetic.main.fragment_movies.*
-import javax.inject.Inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MoviesFragment : Fragment() {
     private lateinit var mainActivity: MainActivity
-    @Inject lateinit var moviesVM: MoviesViewModel
+    private val moviesVM: MoviesViewModel by viewModel()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mainActivity = context as MainActivity
-        (mainActivity.application as App).appComponent.inject(this)
     }
 
     override fun onCreateView(

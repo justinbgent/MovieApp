@@ -53,10 +53,10 @@ class App: Application() {
         }
     }
 
-    val appComponent: ApplicationGraph by lazy {
-        DaggerApplicationGraph.builder()
-            .viewModelModule(ViewModelModule())
-            .apiModule(ApiModule())
-            .build()
-    }
+    //val appComponent: ApplicationGraph by lazy {
+    //    DaggerApplicationGraph.builder()
+    //        .viewModelModule(ViewModelModule())
+    //        .apiModule(ApiModule())
+    //        .build()
+    //}
 }

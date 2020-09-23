@@ -7,23 +7,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.practice_project.movieapp.R
-import com.practice_project.movieapp.di.App
 import com.practice_project.movieapp.model.Movie
 import com.practice_project.movieapp.MovieConstants
 import com.practice_project.movieapp.viewmodel.DetailsViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_movie_details.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.lang.Exception
-import javax.inject.Inject
 
 class MovieDetailsFragment : Fragment() {
     private lateinit var mainActivity: MainActivity
-    @Inject lateinit var detailsVM: DetailsViewModel
+    private val detailsVM: DetailsViewModel by viewModel()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mainActivity = context as MainActivity
-        (mainActivity.application as App).appComponent.inject(this)
     }
 
     override fun onCreateView(

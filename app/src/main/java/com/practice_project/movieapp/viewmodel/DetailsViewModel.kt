@@ -6,9 +6,8 @@ import com.practice_project.movieapp.retrofit.MovieService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import javax.inject.Inject
 
-class DetailsViewModel @Inject constructor(private val movieService: MovieService): ViewModel() {
+class DetailsViewModel (private val movieService: MovieService): ViewModel() {
     private var disposable: Disposable? = null
 
     fun getGenreNameById(ids: List<Int>): MutableLiveData<MutableList<String>> {
