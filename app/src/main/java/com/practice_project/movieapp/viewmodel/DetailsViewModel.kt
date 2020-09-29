@@ -29,7 +29,7 @@ class DetailsViewModel (private val movieService: MovieService): ViewModel() {
 
     override fun onCleared() {
         if (disposable != null){
-            disposable = null
+            disposable?.dispose()
         }
         super.onCleared()
     }

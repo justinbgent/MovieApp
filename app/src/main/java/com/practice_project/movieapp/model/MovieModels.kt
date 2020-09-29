@@ -4,7 +4,10 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class MovieList(val results: List<Movie>, val total_pages: Int, val page: Int): Parcelable
+data class MovieList(
+    val results: List<Movie>,
+    val total_pages: Int,
+    val page: Int): Parcelable
 
 @Parcelize
 data class Movie(
